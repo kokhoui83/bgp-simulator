@@ -3,3 +3,7 @@ FROM ubuntu:22.04
 
 # update and install bird routing deamon
 RUN apt update && apt install nginx -y
+
+# run nginx
+CMD service nginx start \
+  && tail -f /dev/null
