@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  as100-bgp-router:
+    image: bgp-router:latest
+    container_name: as100-bgp-router
+    cap_add:
+    - ALL
+    networks:
+      as100-net:
+        ipv4_address: 10.100.0.10
+  as100-webserver:
+    image: bgp-webserver:latest
+    container_name: as100-webserver
+    cap_add:
+    - ALL
+    networks:
+      as100-net:
+        ipv4_address: 10.100.0.20
+
+  as110-bgp-router:
+    image: bgp-router:latest
+    container_name: as110-bgp-router
+    cap_add:
+    - ALL
+    networks:
+      as110-net:
+        ipv4_address: 10.110.0.10
+  as110-webserver:
+    image: bgp-webserver:latest
+    container_name: as110-webserver
+    cap_add:
+    - ALL
+    networks:
+      as110-net:
+        ipv4_address: 10.110.0.20
+
+networks:
+  as100-net:
+    name: bs-as100-net
+    ipam:
+      config:
+      - subnet: 10.100.0.0/24
+  as110-net:
+    name: bs-as110-net
+    ipam:
+      config:
+      - subnet: 10.110.0.0/24
