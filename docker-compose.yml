@@ -9,14 +9,22 @@ services:
     networks:
       as100-net:
         ipv4_address: 10.100.0.10
-  as100-webserver:
+  as100-webserver-a:
     image: bgp-webserver:latest
-    container_name: as100-webserver
+    container_name: as100-webserver-a
     cap_add:
     - ALL
     networks:
       as100-net:
         ipv4_address: 10.100.0.20
+  as100-webserver-b:
+    image: bgp-webserver:latest
+    container_name: as100-webserver-b
+    cap_add:
+    - ALL
+    networks:
+      as100-net:
+        ipv4_address: 10.100.0.21
 
   as110-bgp-router:
     image: bgp-router:latest
@@ -26,14 +34,22 @@ services:
     networks:
       as110-net:
         ipv4_address: 10.110.0.10
-  as110-webserver:
+  as110-webserver-a:
     image: bgp-webserver:latest
-    container_name: as110-webserver
+    container_name: as110-webserver-a
     cap_add:
     - ALL
     networks:
       as110-net:
         ipv4_address: 10.110.0.20
+  as110-webserver-b:
+    image: bgp-webserver:latest
+    container_name: as110-webserver-b
+    cap_add:
+    - ALL
+    networks:
+      as110-net:
+        ipv4_address: 10.110.0.21
 
 networks:
   as100-net:
